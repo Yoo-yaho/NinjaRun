@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Obstacle
+  - Unbeatable
+  - DeadZone
+  - Log
+  - Enemy
+  - Platform
+  - Sword
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Player
+  - Water
+  - UI
+  - Grounds
+  - Obstacles
+  - Unbeatable
+  - Platform
+  - Cloaking
+  - Log
+  - Enemy
+  - Post Processing
+  - Sword
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: FarMountain
+    uniqueID: 3974209311
+    locked: 0
+  - name: Mountain
+    uniqueID: 3986629483
+    locked: 0
+  - name: Cloud
+    uniqueID: 3461970691
+    locked: 0
+  - name: Castle
+    uniqueID: 1830839069
+    locked: 0
+  - name: Platform3
+    uniqueID: 1766267607
+    locked: 0
+  - name: Platform2
+    uniqueID: 49552109
+    locked: 0
+  - name: Platform1
+    uniqueID: 2350418983
+    locked: 0
+  - name: Obstacle
+    uniqueID: 1957783705
+    locked: 0
+  - name: Enemy
+    uniqueID: 840509707
+    locked: 0
+  - name: Player
+    uniqueID: 3879131769
+    locked: 0
+  - name: Log
+    uniqueID: 1567406595
+    locked: 0
+  - name: Effect
+    uniqueID: 2542174853
+    locked: 0
