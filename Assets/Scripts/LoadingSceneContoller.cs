@@ -44,7 +44,7 @@ public class LoadingSceneContoller : MonoBehaviour
             else
             {
                 timer += Time.unscaledTime;
-                loadingBar.fillAmount = Mathf.Lerp(0.1f, 1f, timer / 10000);
+                loadingBar.fillAmount = Mathf.Lerp(0.9f, 1f, timer);
 
                 if (loadingBar.fillAmount >= 1f)
                 {
