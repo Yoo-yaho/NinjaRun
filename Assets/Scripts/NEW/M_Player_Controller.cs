@@ -94,22 +94,34 @@ public class M_Player_Controller : MonoBehaviour
             // 첫 번째 터치가 입력됐다면
             if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
+                // 공격이 가능한지 체크함
+                Attack_Check();
+
                 // 더블 점프 상태라면, 종료함 (반응 없음)
                 if (PlayerState == PlayerState.D_JUMP)
                 {
+                    if (_IsAttack)
+                    {
+                        StartCoroutine("Attack");
+                    }
+
                     return;
                 }
 
                 // 점프 상태라면, 더블 점프 상태로 전환
                 if (PlayerState == PlayerState.JUMP)
                 {
+                    if (_IsAttack)
+                    {
+                        StartCoroutine("Attack");
+                    }
+
                     D_Jump();
                 }
 
                 // 달리고 있는 상태라면, 점프 상태로 전환
                 if (PlayerState == PlayerState.RUN)
                 {
-                    Attack_Check();
 
                     // 공격이 가능한 상태라면, 공격 상태로 전환 
                     if (_IsAttack)
@@ -141,23 +153,39 @@ public class M_Player_Controller : MonoBehaviour
         // 마우스 좌클릭을 눌렀다면
         if (Input.GetMouseButtonDown(0))
         {
+            Attack_Check();
 
             // 더블 점프 상태라면, 종료함 (반응 없음)
             if (PlayerState == PlayerState.D_JUMP)
             {
+
+                // 공격이 가능한 상태라면, 공격 상태로 전환 
+                if (_IsAttack)
+                {
+                    StartCoroutine("Attack");
+                }
+
                 return;
             }
 
             // 점프 상태라면, 더블 점프 상태로 전환
             if (PlayerState == PlayerState.JUMP)
             {
+
+                // 공격이 가능한 상태라면, 공격 상태로 전환 
+                if (_IsAttack)
+                {
+                    StartCoroutine("Attack");
+                    return;
+                }
+
                 D_Jump();
             }
 
             // 달리고 있는 상태라면, 점프 상태로 전환
             if (PlayerState == PlayerState.RUN)
             {
-                Attack_Check();
+
                 // 공격이 가능한 상태라면, 공격 상태로 전환 
                 if (_IsAttack)
                 {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.029715091, g: 0.0435585, b: 0.063490555, a: 1}
+  m_IndirectSpecularColor: {r: 0.0290138, g: 0.042279642, b: 0.06117054, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4763,10 +4763,10 @@ MonoBehaviour:
   _Jump_Effect: {fileID: 944075928}
   _D_Jump_Effect: {fileID: 1179568603}
   _Attack_Effect: {fileID: 1154955952}
-  _PlayerAudioclip:
-  - {fileID: 8300000, guid: 454f687b94d5e7046986a9de1a651869, type: 3}
+  _PlayerClip:
   - {fileID: 8300000, guid: 0c1564780e9a3c14a8ebb2d8faaca7ea, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 454f687b94d5e7046986a9de1a651869, type: 3}
+  - {fileID: 8300000, guid: 5a7b5b7a21bd6c84799b41e9b8696249, type: 3}
   _Distance: 0
   _Distance_Speed: 10
   _Sword: {fileID: 2110015495}
