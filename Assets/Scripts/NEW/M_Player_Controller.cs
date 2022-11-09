@@ -48,7 +48,8 @@ public class M_Player_Controller : MonoBehaviour
         _PlayerAnimator = GetComponent<Animator>();
         _PlayerAudio = GetComponent<AudioSource>();
         _PlayerSprite = GetComponent<SpriteRenderer>();
-        Time.timeScale = 1;
+
+        _PlayerAnimator.SetBool("DIE", false);
     }
 
     void Update()
@@ -367,6 +368,7 @@ public class M_Player_Controller : MonoBehaviour
         if (other.tag == "DeadZone" && PlayerState != PlayerState.DEATH)
         {
             PlayerState = PlayerState.DEATH;
+            _Distance_Speed = 0;
         }
 
     }
@@ -376,7 +378,7 @@ public class M_Player_Controller : MonoBehaviour
         if (collision.collider.tag == "Enemy" && PlayerState != PlayerState.DEATH)
         {
             PlayerState = PlayerState.DEATH;
-            Time.timeScale = 0;
+            _Distance_Speed = 0;
         }
     }
 
