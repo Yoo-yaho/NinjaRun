@@ -10,6 +10,16 @@ public class EnemyController : MonoBehaviour
     private Collider2D collider;
     private SpriteRenderer spriterenderer;
 
+
+
+    // 적 플랫폼 낙사 관련한 패치
+
+    // 플랫폼을 감지하는 콜라이더 오브젝트
+    private GameObject _Platform;
+
+    // 스크롤 속도를 변경하는 ScrollingObject 스크립트
+    private ScrollingObject _ScrollingObject;
+
     // 깃허브 버전 새로운 업데이트 !
 
     // 적의 공격 받는 횟수 ( Life ) 를 생성
@@ -27,6 +37,9 @@ public class EnemyController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         collider = GetComponent<Collider2D>();
         spriterenderer = GetComponent<SpriteRenderer>();
+
+        _Platform = transform.GetChild(0).gameObject;
+        _ScrollingObject = GetComponent<ScrollingObject>();
     }
 
     private void Start()
@@ -43,15 +56,29 @@ public class EnemyController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+        if (_Platform.GetComponent<Enemy_PlatformCheck>()._IsCheck)
+        {  
+            // 속도가 작다면 ( 정지 속도 10f 라면 )
+            if (_ScrollingObject.speed < 11)
+            {
+                // 기본 이동속도로 전환함
+                _ScrollingObject.speed = 12f;
+            }
+
+
+        }
+        else
+        {
+
+            // 속도가 크다면 ( 기본 속도 12f 라면 )
+            if (_ScrollingObject.speed > 11)
+            {
+                // 플랫폼의 이동 속도와 동일시함
+                _ScrollingObject.speed = 10f;
+            }
+        }
     }
 
-    void Think()
-    {
-        movementFlag = Random.Range(-1, 2);
-
-        Invoke("Think", 1);
-    }
 
     /*IEnumerator ChangeMovement()
     {
