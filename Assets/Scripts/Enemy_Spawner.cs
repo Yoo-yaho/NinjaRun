@@ -11,6 +11,16 @@ public class Enemy_Spawner : MonoBehaviour
 
     // 플랫폼 위에 있는 지의 여부
     public bool _IsPlatform = false;
+
+    // 스폰 시간 최솟값
+    [SerializeField]
+    private float Spawn_Min = 1.5f;
+
+    // 스폰 시간 최댓값
+    [SerializeField]
+    private float Spawn_Max = 3.0f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,20 +48,15 @@ public class Enemy_Spawner : MonoBehaviour
                 // 적 스폰
                 _IsSpawn = true;
 
-                // 추가 랜덤 보정치를 더하는 변수 생성
-                float _Bouns = Random.Range(3.0f, 6.0f);
-
-
                 // 보정치를 적용한 트랜스폼 변수 생성 ( 플랫폼 맨 앞에서 생성됨 )
-                Vector3 _trans = new Vector3(
-                    this.transform.position.x + 2f + _Bouns, this.transform.position.y + 2f, this.transform.position.z);
+                Vector3 _trans = new Vector3(16,2,0);
 
 
                 // 스폰 가능하다면 적을 생성
                 Instantiate(_Enemy, _trans, this.transform.rotation);
 
                 // 지연
-                yield return new WaitForSeconds(1.5f);
+                yield return new WaitForSeconds(Random.Range(Spawn_Min, Spawn_Max));
 
                 // 다시 적을 스폰 가능하도록 설정함
                 _IsSpawn = false;
@@ -68,6 +73,11 @@ public class Enemy_Spawner : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // 이미 활성화라면 종료
+        if (_IsPlatform)
+        {
+            return;
+        }
         // 플랫폼을 감지하면 플랫폼 위에 있음을 알림
         if(collision.tag == "Platform")
         {
@@ -76,6 +86,11 @@ public class Enemy_Spawner : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
+        // 이미 비활성화라면 종료
+        if (!_IsPlatform)
+        {
+            return;
+        }
         // 플랫폼을 벗어나면 플랫폼 위에 없을음 알림
         if(collision.tag == "Platform")
         {

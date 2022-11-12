@@ -49,6 +49,8 @@ MonoBehaviour:
   _Enemy: {fileID: 0}
   _IsSpawn: 0
   _IsPlatform: 0
+  Spawn_Min: 1.5
+  Spawn_Max: 3
 --- !u!50 &4835012182847116441
 Rigidbody2D:
   serializedVersion: 4
@@ -94,5 +96,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 10}
+  m_Size: {x: 0.1, y: 10}
   m_EdgeRadius: 0
