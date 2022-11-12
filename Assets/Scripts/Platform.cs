@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
 
 // 발판으로서 필요한 동작을 담은 스크립트
-public class Platform : MonoBehaviour
-{
+public class Platform : MonoBehaviour {
     public GameObject[] obstacles; // 장애물 오브젝트들
+    public GameObject enemySpawn;
     public GameObject enemy;
     private bool stepped = false; // 플레이어 캐릭터가 밟았었는가
 
     // 컴포넌트가 활성화될때 마다 매번 실행되는 메서드
-    private void OnEnable()
-    {
+    private void OnEnable() {
         // 발판을 리셋하는 처리
         stepped = false;
 
@@ -36,6 +35,6 @@ public class Platform : MonoBehaviour
         {
             Instantiate(enemy, transform.position + (Vector3.up * 5f) + (Vector3.right * 50.0f), transform.rotation);
         }
-
+        
     }
 }

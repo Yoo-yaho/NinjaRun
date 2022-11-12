@@ -2,6 +2,7 @@
 
 // 발판을 생성하고 주기적으로 재배치하는 스크립트
 public class PlatformSpawner : MonoBehaviour {
+
     public GameObject platformPrefab; // 생성할 발판의 원본 프리팹
     public int count = 3; // 생성할 발판의 개수
 

@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public int _Distance = 0; // 플레이어로부터 추출한 거리값
 
+    
+
     public GameObject _Player;
     void Start()
     {
@@ -30,7 +32,8 @@ public class GameManager : MonoBehaviour
         
     }
 
-    void Draw_Distance()
+    // 만약 플레이어가 사망 상태일 경우 모든 오브젝트의 스크롤링을 중단함
+    void Die()
     {
 
     }

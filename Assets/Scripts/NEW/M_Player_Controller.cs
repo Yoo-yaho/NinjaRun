@@ -387,6 +387,7 @@ public class M_Player_Controller : MonoBehaviour
         if (!_IsDie)
         {
             _PlayerAnimator.SetTrigger("DIE");
+            BroadcastMessage("DIE");
             _IsDie = true;
         }
 

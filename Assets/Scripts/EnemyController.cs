@@ -81,45 +81,47 @@ public class EnemyController : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
     // 공격 당했을 때, 무작위 방향으로 위로 떠오르고, 콜라이더를 제거해 추락시킨다.
     // 공격 당했음을 알리기 위해 머터리얼에 접근해 R 값을 증가시켜 깜빡이는 효과를 준다.
     void Sword_Hit()
     {
-
-        if (!Is_Attacked)
-
-        {   
-            // 적을 날리는 힘
-            float _ForcePower = 1000f;
-
-            // 적을 날리는 방향 ( 대각선 )
-            Vector2 _Dir = (Vector2.right);
-
-
-            // 체력을 깎음
-            Life -= 1;
-
-            // 힘을 가함 ( 가하기 전에 초기화 )
-            rigidbody.AddForce((_Dir * _ForcePower), ForceMode2D.Force);
-
-            if(Life <= 0)
-            {
-                collider.enabled = false; // 콜라이더 비활성화
-
-                Destroy(this.gameObject, 3.0f); //3초 뒤에 제거
-            }
-            else
-            {
-
-                StartCoroutine("Attack_Check");
-            }
-
-
-            // 이미지를 전환함
-            Set_Image();
-
-
+        // 예외 처리
+        if (Is_Attacked)
+        {
+            return;
         }
+
+        // 적을 날리는 힘
+        float _ForcePower = 1000f;
+
+        // 적을 날리는 방향 ( 대각선 )
+        Vector2 _Dir = (Vector2.right);
+
+
+        // 체력을 깎음
+        Life -= 1;
+
+        // 힘을 가함 ( 가하기 전에 초기화 )
+        rigidbody.AddForce((_Dir * _ForcePower), ForceMode2D.Force);
+
+        if (Life <= 0)
+        {
+            collider.enabled = false; // 콜라이더 비활성화
+
+            Destroy(this.gameObject, 3.0f); //3초 뒤에 제거
+        }
+        else
+        {
+
+            StartCoroutine("Attack_Check");
+        }
+
+
+        // 이미지를 전환함
+        Set_Image();
+
+
 
         /*
           
@@ -137,8 +139,9 @@ public class EnemyController : MonoBehaviour
     IEnumerator Attack_Check()
     {
         Is_Attacked = true;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.5f);
         Is_Attacked = false;
+
     }
 
     // 공격 당했음을 알리기 위해 머터리얼에 접근해 R 값을 증가시켜 깜빡이는 효과를 준다.
