@@ -31,10 +31,4 @@ public class GameManager : MonoBehaviour
 
         
     }
-
-    // 만약 플레이어가 사망 상태일 경우 모든 오브젝트의 스크롤링을 중단함
-    void Die()
-    {
-
-    }
 }
