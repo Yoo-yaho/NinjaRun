@@ -120,7 +120,7 @@ public class EnemyController : MonoBehaviour
         }
 
         // 적을 날리는 힘
-        float _ForcePower = 1000f;
+        float _ForcePower = 800f;
 
         // 적을 날리는 방향 ( 대각선 )
         Vector2 _Dir = (Vector2.right);
@@ -166,7 +166,7 @@ public class EnemyController : MonoBehaviour
     IEnumerator Attack_Check()
     {
         Is_Attacked = true;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.12f);
         Is_Attacked = false;
 
     }
