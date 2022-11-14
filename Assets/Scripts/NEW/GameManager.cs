@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public int _Distance = 0; // 플레이어로부터 추출한 거리값
 
+    
+
     public GameObject _Player;
     void Start()
     {
@@ -28,10 +30,5 @@ public class GameManager : MonoBehaviour
         _Distance_Bar.value = _Distance;
 
         
-    }
-
-    void Draw_Distance()
-    {
-
     }
 }

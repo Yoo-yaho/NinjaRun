@@ -223,7 +223,7 @@ public class M_Player_Controller : MonoBehaviour
         _PlayerAudio.clip = _PlayerClip[0];
         _PlayerAudio.Play();
 
-        yield return new WaitForSeconds(0.5f); // 지연
+        yield return new WaitForSeconds(0.06f); // 지연
 
         _Sword.GetComponent<CircleCollider2D>().enabled = false; // 콜라이더 비활성화
 
@@ -387,6 +387,7 @@ public class M_Player_Controller : MonoBehaviour
         if (!_IsDie)
         {
             _PlayerAnimator.SetTrigger("DIE");
+            BroadcastMessage("DIE");
             _IsDie = true;
         }
 
