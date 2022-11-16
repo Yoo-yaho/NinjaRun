@@ -10,17 +10,23 @@ public class UIController : MonoBehaviour
     M_Player_Controller _Player_Controller;
     TextMeshProUGUI distanceText;
     TextMeshProUGUI finalDistanceText;
-    GameObject result;
+    public GameObject result;
+    public GameObject clear;
     GameObject Player;
+    GameManager gameManager;
 
     private void Awake()
     {
         _Player_Controller = GameObject.Find("Player").GetComponent<M_Player_Controller>();
         distanceText = GameObject.Find("DistanceText").GetComponent<TextMeshProUGUI>();
         finalDistanceText = GameObject.Find("FinalDistanceText").GetComponent<TextMeshProUGUI>();
+        gameManager = GameObject.Find("New_GameManager").GetComponent<GameManager>();
+    }
 
-        result = GameObject.Find("Result");
+    private void Start()
+    {
         result.SetActive(false);
+        clear.SetActive(false);
     }
 
     private void Update()
@@ -36,6 +42,9 @@ public class UIController : MonoBehaviour
             result.SetActive(true);
             finalDistanceText.text = _Distance + "m";
         }
+
+        if (gameManager.isClear == true)
+            clear.SetActive(true);
     }
 
     public void Quit()

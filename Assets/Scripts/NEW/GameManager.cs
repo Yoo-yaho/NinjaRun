@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     public int _Distance = 0; // 플레이어로부터 추출한 거리값
 
-    
+    public bool isClear;
 
     public GameObject _Player;
     void Start()
@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
         _Player = GameObject.FindGameObjectWithTag("Player");
         _Distance_Text = GameObject.Find("Canvas/DistanceText").GetComponent<TextMeshProUGUI>();
         _Distance_Bar = GameObject.Find("Canvas/New_Distance").GetComponent<Slider>();
+
+        isClear = false;
     }
     
     void Update()
@@ -27,8 +29,10 @@ public class GameManager : MonoBehaviour
         _Distance = (int)_Player.GetComponent<M_Player_Controller>()._Distance;
 
         _Distance_Text.text = string.Format("{0}M", _Distance);
-        _Distance_Bar.value = _Distance;
+        _Distance_Bar.value = _Distance * 5f;
 
-        
+
+        if (_Distance_Bar.value == 1000)
+            isClear = true;
     }
 }

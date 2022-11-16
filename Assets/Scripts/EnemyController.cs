@@ -140,7 +140,6 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
-
             StartCoroutine("Attack_Check");
         }
 
@@ -166,7 +165,7 @@ public class EnemyController : MonoBehaviour
     IEnumerator Attack_Check()
     {
         Is_Attacked = true;
-        yield return new WaitForSeconds(0.12f);
+        yield return new WaitForSeconds(0.05f);
         Is_Attacked = false;
 
     }

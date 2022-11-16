@@ -203,7 +203,6 @@ public class M_Player_Controller : MonoBehaviour
 
         }
     }
-
     void Distance_Check()
     {
         _Distance += _Distance_Speed * Time.deltaTime;
@@ -213,7 +212,7 @@ public class M_Player_Controller : MonoBehaviour
     IEnumerator Attack()
     {
 
-        _Sword.GetComponent<CircleCollider2D>().enabled = true; // 콜라이더 활성화
+        _Sword.GetComponent<BoxCollider2D>().enabled = true; // 콜라이더 활성화
         _PlayerAnimator.SetTrigger("ATTACK"); // 공격 애니메이션 재생
 
         // 공격 효과 활성화
@@ -225,7 +224,7 @@ public class M_Player_Controller : MonoBehaviour
 
         yield return new WaitForSeconds(0.06f); // 지연
 
-        _Sword.GetComponent<CircleCollider2D>().enabled = false; // 콜라이더 비활성화
+        _Sword.GetComponent<BoxCollider2D>().enabled = false; // 콜라이더 비활성화
 
     }
 

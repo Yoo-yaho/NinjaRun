@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pet_Controller : MonoBehaviour
 {
-    public Transform player;
+    GameObject player;
     Animator anim;
 
     public float distance;
@@ -17,11 +17,12 @@ public class Pet_Controller : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+        player = GameObject.Find("Player");
 
         anim.SetBool("Select", true);
 
         petPos = new Vector2(transform.position.x, transform.position.y);
-        playerPos = new Vector2(transform.position.x, player.position.y + 0.5f);
+        playerPos = new Vector2(transform.position.x, player.transform.position.y + 0.5f);
     }
 
     private void Update()
@@ -33,7 +34,7 @@ public class Pet_Controller : MonoBehaviour
             currentTime = lerpTime;
         }
 
-        transform.position = Vector2.Lerp(petPos, (Vector2)player.position + new Vector2(-1.6f, 0.8f), currentTime / lerpTime);
+        transform.position = Vector2.Lerp(petPos, (Vector2)player.transform.position + new Vector2(-1.6f, 0.8f), currentTime / lerpTime);
         //transform.position = new Vector2(transform.position.x, player.position.y + 0.2f);
     }
 }
