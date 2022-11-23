@@ -392,6 +392,43 @@ public class M_Player_Controller : MonoBehaviour
 
     }
 
+    public void Jump_Button()
+    { 
+        
+        // 플레이어가 사망 상태라면 실행하지 않음
+        if (PlayerState == PlayerState.DEATH)
+        {
+            Die();
+            return;
+        }
+
+        // 더블 점프 상태라면 종료함
+        if (PlayerState == PlayerState.D_JUMP)
+        {
+            return;
+        }
+
+        // 점프 상태라면, 더블 점프 상태로 전환
+        if (PlayerState == PlayerState.JUMP)
+        {
+            D_Jump();
+        }
+
+        // 달리고 있는 상태라면, 점프 상태로 전환
+        if (PlayerState == PlayerState.RUN)
+        {
+
+            Jump();
+
+        }
+
+    }
+
+    public void Attack_Button()
+    {
+        StartCoroutine("Attack");
+    }
+
 
 
 }
