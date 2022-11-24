@@ -39,8 +39,6 @@ public class M_Player_Controller : MonoBehaviour
     private bool _IsAttack = false; // 점프 대신 공격 명령어를 사용하는지 체크함
     private bool _IsDie = false; // 죽음 처리 체크
 
-    public bool _IsMobie = false; // 모바일버전 체크
-
     void Awake()
     {
         // 컴포넌트 부착
@@ -57,15 +55,6 @@ public class M_Player_Controller : MonoBehaviour
 
         Landing_Check();
 
-        if (_IsMobie)
-        {
-            State_Move_Mobie();
-        }
-        else
-        {
-            State_Move();
-        }
-
         Distance_Check();
 
     }
@@ -80,6 +69,7 @@ public class M_Player_Controller : MonoBehaviour
 
     }
 
+    /*
     void State_Move_Mobie()
     {
         // 플레이어가 사망 상태라면 실행하지 않음
@@ -203,6 +193,8 @@ public class M_Player_Controller : MonoBehaviour
 
         }
     }
+
+    */
     void Distance_Check()
     {
         _Distance += _Distance_Speed * Time.deltaTime;
@@ -377,6 +369,7 @@ public class M_Player_Controller : MonoBehaviour
         if (collision.collider.tag == "Enemy" && PlayerState != PlayerState.DEATH)
         {
             PlayerState = PlayerState.DEATH;
+            Die();
             _Distance_Speed = 0;
         }
     }
@@ -398,7 +391,6 @@ public class M_Player_Controller : MonoBehaviour
         // 플레이어가 사망 상태라면 실행하지 않음
         if (PlayerState == PlayerState.DEATH)
         {
-            Die();
             return;
         }
 
@@ -426,6 +418,11 @@ public class M_Player_Controller : MonoBehaviour
 
     public void Attack_Button()
     {
+        if(PlayerState == PlayerState.DEATH)
+        {
+            return;
+        }
+
         StartCoroutine("Attack");
     }
 
