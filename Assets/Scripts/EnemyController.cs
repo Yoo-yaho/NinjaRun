@@ -25,11 +25,17 @@ public class EnemyController : MonoBehaviour
     // 적의 공격 받는 횟수 ( Life ) 를 생성
     private int Life;
 
+    // 적 스코어링을 위한 초기 값 저장
+    private int _ScoreLife;
+
     // 적이 공격을 받았을 경우, 일정 시간동안 무적 판정
     private bool Is_Attacked = false;
 
     // 적 스크롤링 ( Transform , Rigidbody 이동 겹치는 문제 )
     public float _Speed = 2f;
+
+    // 스코어 호출을 위한 캔버스스크립트
+    private GameObject _Canvas;
 
     private void Awake()
     {
@@ -40,6 +46,9 @@ public class EnemyController : MonoBehaviour
 
         _Platform = transform.GetChild(0).gameObject;
         _ScrollingObject = GetComponent<ScrollingObject>();
+
+        _Canvas = GameObject.Find("Canvas");
+
     }
 
     private void Start()
@@ -47,12 +56,15 @@ public class EnemyController : MonoBehaviour
         // 목숨을 1 ~ 3 사이로 설정함
         Life = Random.Range(1, 4);
 
+        _ScoreLife = Life;
+
         // 목숨에 비례해 색 설정 ( 보호막 ? )
         // 1 : 기본 - 2 : 노랑 - 3 : 파랑
 
         Set_Image();
 
     }
+
 
     private void FixedUpdate()
     {
@@ -107,6 +119,16 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void OnDisable()
+    {
+        
+    }
+
+    private void OnDestroy()
+    {
+        _Canvas.GetComponent<UIController>().Score_Up((_ScoreLife - 1) * 10);
     }
 
     // 공격 당했을 때, 무작위 방향으로 위로 떠오르고, 콜라이더를 제거해 추락시킨다.

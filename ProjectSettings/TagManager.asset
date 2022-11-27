@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Platform
   - Sword
+  - GameManager
   layers:
   - Default
   - TransparentFX

@@ -30,7 +30,7 @@ public class M_Player_Controller : MonoBehaviour
     private int _Jump_Power = 15; // 점프의 힘
 
     public float _Distance = 0; // 플레이어가 달려간 거리
-    public int _Distance_Speed = 10; // 플레이어가 1초 동안 달려가는 거리
+    public int _Distance_Speed = 5; // 플레이어가 1초 동안 달려가는 거리
 
     public GameObject _Sword; // 근접 공격 오브젝트를 공격을 통화 활성화/비활성화
 

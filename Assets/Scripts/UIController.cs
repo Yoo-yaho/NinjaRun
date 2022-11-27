@@ -15,12 +15,18 @@ public class UIController : MonoBehaviour
     GameObject Player;
     GameManager gameManager;
 
+    TextMeshProUGUI ScoreText;
+    TextMeshProUGUI ScoreTextClear;
+    int Score = 0;
+
     private void Awake()
     {
         _Player_Controller = GameObject.Find("Player").GetComponent<M_Player_Controller>();
         distanceText = GameObject.Find("DistanceText").GetComponent<TextMeshProUGUI>();
         finalDistanceText = GameObject.Find("FinalDistanceText").GetComponent<TextMeshProUGUI>();
         gameManager = GameObject.Find("New_GameManager").GetComponent<GameManager>();
+        ScoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
+        ScoreTextClear = GameObject.Find("ScoreText_Clear").GetComponent<TextMeshProUGUI>();
     }
 
     private void Start()
@@ -41,10 +47,20 @@ public class UIController : MonoBehaviour
         {
             result.SetActive(true);
             finalDistanceText.text = _Distance + "m";
+            ScoreText.text = "Score : " + Score;
         }
 
         if (gameManager.isClear == true)
+        {
+
+            // 클리어 점수 합산 출력
+
             clear.SetActive(true);
+            ScoreTextClear.text = "Score : " + (Score + 100);
+
+        }
+
+            
     }
 
     public void Quit()
@@ -55,5 +71,10 @@ public class UIController : MonoBehaviour
     public void Retry()
     {
         SceneManager.LoadScene("Ingame");
+    }
+
+    public void Score_Up(int Value)
+    {
+        Score += Value;
     }
 }
